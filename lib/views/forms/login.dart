@@ -100,7 +100,6 @@ class LoginView extends StatelessWidget {
                           describe: 'Don\'t have an account? ',
                           linkText: 'Click here',
                           link: () {
-                            Get.lazyPut(() => RegistController());
                             Get.offAllNamed(AppRouter.urlRegister);
                           },
                         ),

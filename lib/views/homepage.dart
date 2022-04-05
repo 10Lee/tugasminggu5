@@ -26,7 +26,6 @@ class Home extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
               onPressed: () {
-                Get.lazyPut(() => ProfileController());
                 Get.toNamed(AppRouter.urlProfile);
               },
               icon: Icon(Icons.person),

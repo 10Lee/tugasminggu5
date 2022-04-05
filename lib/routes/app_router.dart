@@ -1,4 +1,9 @@
 import 'package:get/get.dart';
+import 'package:tugas_minggu_5/controllers/bindings/home_binding.dart';
+import 'package:tugas_minggu_5/controllers/bindings/login_binding.dart';
+import 'package:tugas_minggu_5/controllers/bindings/new_article_binding.dart';
+import 'package:tugas_minggu_5/controllers/bindings/profile_binding.dart';
+import 'package:tugas_minggu_5/controllers/bindings/register_binding.dart';
 import 'package:tugas_minggu_5/views/add_article.dart';
 import 'package:tugas_minggu_5/views/forms/login.dart';
 import 'package:tugas_minggu_5/views/forms/registration.dart';
@@ -13,10 +18,30 @@ class AppRouter {
   static String urlAddArticle = '/add_article';
 
   List<GetPage> routes = [
-    GetPage(name: urlHome, page: () => Home()),
-    GetPage(name: urlProfile, page: () => Profile()),
-    GetPage(name: urlRegister, page: () => RegisterView()),
-    GetPage(name: urlLogin, page: () => LoginView()),
-    GetPage(name: urlAddArticle, page: () => AddArticle()),
+    GetPage(
+      name: urlHome,
+      page: () => Home(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: urlProfile,
+      page: () => Profile(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: urlRegister,
+      page: () => RegisterView(),
+      binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: urlLogin,
+      page: () => LoginView(),
+      binding: LoginBinding(),
+    ),
+    GetPage(
+      name: urlAddArticle,
+      page: () => AddArticle(),
+      binding: NewArticleBinding(),
+    ),
   ];
 }
