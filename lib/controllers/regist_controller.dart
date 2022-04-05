@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tugas_minggu_5/routes/app_router.dart';
 
 class RegistController extends GetxController {
@@ -13,9 +12,7 @@ class RegistController extends GetxController {
   TextEditingController passController = TextEditingController();
   TextEditingController confirmPassController = TextEditingController();
 
-  late SharedPreferences pref;
-
-  void saveAccount() async {
+  void saveAccount() {
     Map<String, dynamic> user = {
       "name": nameController.text,
       "city": cityController.text,

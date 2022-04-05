@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:tugas_minggu_5/globals/repositories/news_api.dart';
 import 'package:tugas_minggu_5/models/news.dart';
 import 'package:tugas_minggu_5/routes/app_router.dart';
@@ -17,10 +17,10 @@ class NewArticleController extends GetxController {
 
   String sourceName = '';
 
-  void getCachedData() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-
-    sourceName = pref.getString('name') ?? 'no data';
+  void getCachedData() {
+    Map<String, dynamic> data = GetStorage().read('user');
+    print("sourceName  : ${data['name']}");
+    sourceName = data['name'];
   }
 
   void postDataToApi() {
