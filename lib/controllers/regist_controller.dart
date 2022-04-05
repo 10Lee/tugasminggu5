@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tugas_minggu_5/routes/app_router.dart';
 
@@ -15,13 +16,15 @@ class RegistController extends GetxController {
   late SharedPreferences pref;
 
   void saveAccount() async {
-    pref = await SharedPreferences.getInstance();
+    Map<String, dynamic> user = {
+      "name": nameController.text,
+      "city": cityController.text,
+      "pass": passController.text,
+      "confirm": confirmPassController.text,
+    };
 
-    pref.setString('name', nameController.text);
-    pref.setString('city', cityController.text);
-    pref.setString('pass', passController.text);
-    pref.setString('confirmpass', confirmPassController.text);
-
-    Get.offAllNamed(AppRouter.urlHome);
+    GetStorage()
+        .write('user', user)
+        .then((value) => Get.offAllNamed(AppRouter.urlHome));
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tugas_minggu_5/controllers/regist_controller.dart';
 import 'package:tugas_minggu_5/routes/app_router.dart';
@@ -11,21 +12,25 @@ class LoginController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
-  late SharedPreferences pref;
+  // late SharedPreferences pref;
 
   String name = '', pass = '';
 
   void getDataToForm() async {
-    pref = await SharedPreferences.getInstance();
+    // pref = await SharedPreferences.getInstance();
 
-    name = pref.getString('name') ?? 'no name';
-    pass = pref.getString('pass') ?? 'no pass';
+    // name = pref.getString('name') ?? 'no name';
+    // pass = pref.getString('pass') ?? 'no pass';
+
+    Map<String, dynamic> data = GetStorage().read('user');
+    name = data['name'];
+    pass = data['pass'];
 
     print("$name $pass");
   }
 
   void validateLogin() async {
-    pref = await SharedPreferences.getInstance();
+    // pref = await SharedPreferences.getInstance();
 
     if (name == nameController.text && pass == passController.text) {
       print('login success');

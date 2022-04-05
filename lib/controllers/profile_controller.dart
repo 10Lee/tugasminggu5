@@ -1,22 +1,20 @@
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:tugas_minggu_5/routes/app_router.dart';
 
 class ProfileController extends GetxController {
-  String name = '', city = '';
+  RxString name = ''.obs;
+  RxString city = ''.obs;
 
-  late SharedPreferences pref;
-
-  void getData() async {
-    pref = await SharedPreferences.getInstance();
-    name = pref.getString('name') ?? 'No Name';
-    city = pref.getString('city') ?? 'No City';
-
-    update();
+  void getData() {
+    Map<String, dynamic> data = GetStorage().read('user');
+    name.value = data["name"] ?? 'No Name';
+    city.value = data["city"] ?? 'No City';
   }
 
   void logout() {
-    pref.clear();
+    // pref.clear();
+    GetStorage().remove('user');
     print("Session has been deleted");
     Get.offAllNamed(AppRouter.urlRegister);
   }
