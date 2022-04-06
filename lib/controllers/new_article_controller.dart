@@ -19,8 +19,9 @@ class NewArticleController extends GetxController {
 
   void getCachedData() {
     Map<String, dynamic> data = GetStorage().read('user');
-    print("sourceName  : ${data['name']}");
+
     sourceName = data['name'];
+    print("sourceName : $sourceName");
   }
 
   void postDataToApi() {
@@ -43,8 +44,9 @@ class NewArticleController extends GetxController {
       );
 
       homeController.listOfNews.insert(0, userNews);
-
-      Get.offAllNamed(AppRouter.urlHome);
+      homeController.listOfNews.refresh();
+      // Get.offAllNamed(AppRouter.urlHome);
+      Get.back();
     }).onError((error, stackTrace) {
       print(error);
       print(stackTrace);

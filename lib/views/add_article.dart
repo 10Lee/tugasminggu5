@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:tugas_minggu_5/controllers/home_controller.dart';
+// import 'package:tugas_minggu_5/controllers/home_controller.dart';
 import 'package:tugas_minggu_5/controllers/new_article_controller.dart';
 import 'package:tugas_minggu_5/globals/style.dart';
 import 'package:tugas_minggu_5/views/widgets/input_fields.dart';
@@ -11,7 +11,7 @@ class AddArticle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeController homeController = Get.find<HomeController>();
+    // HomeController homeController = Get.find<HomeController>();
     NewArticleController newArticleController =
         Get.find<NewArticleController>();
 

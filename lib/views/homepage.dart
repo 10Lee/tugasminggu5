@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:tugas_minggu_5/controllers/profile_controller.dart';
 import 'package:tugas_minggu_5/routes/app_router.dart';
 import 'package:tugas_minggu_5/controllers/home_controller.dart';
 import 'package:tugas_minggu_5/views/widgets/category.dart';
@@ -122,6 +121,7 @@ class Home extends StatelessWidget {
 
   _buildLatestNews() {
     List<Widget> listOfWidgetNews = [];
+    homeController.listOfNews.refresh();
 
     for (int i = 0;
         i <
